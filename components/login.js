@@ -19,9 +19,15 @@ const login = () => {
             setCookie('remember', 'false');
         }
         axios.post("https://assignment-api.piton.com.tr/api/v1/user/login", { password: password, email: email }).then(response => {
+           
+        if(response.data.token){
             console.log(response.data.token)
             setCookie('token', response.data.token);
             router.push('/products')
+        }else{
+            setError(true)
+        }
+       
         })
     }
     return (
@@ -36,6 +42,10 @@ const login = () => {
             </div>
 
             <button className=' text-white rounded-full py-4 bg-header-logo ' onClick={() => login()}>Login</button>
+            {
+                error&&
+                <label className='text-center text-red-600'>Şifre veya E-mail Yanlış</label>
+            }
         </div>
     )
 }

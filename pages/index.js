@@ -57,16 +57,16 @@ export default function Home() {
                 </div>
 
             }
-            {isUser ? <Login/> : <Register/>}
+            {isUser ? <Login /> : <Register />}
 
             {
               isUser ?
-              <div onClick={() => setIsUser(false)} className='mt-2 text-center cursor-pointer text-gray-400'>
-                <span>Hesap Olusturun</span>
-              </div>
-              : <div onClick={() => setIsUser(true)} className='mt-2 text-center cursor-pointer text-gray-400'>
-              <span>Hesabım var</span>
-            </div>
+                <div onClick={() => setIsUser(false)} className='mt-2 text-center cursor-pointer text-gray-400'>
+                  <span>Hesap Olusturun</span>
+                </div>
+                : <div onClick={() => setIsUser(true)} className='mt-2 text-center cursor-pointer text-gray-400'>
+                  <span>Hesabım var</span>
+                </div>
             }
 
           </div>
@@ -77,22 +77,27 @@ export default function Home() {
     </>
   )
 }
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async ({ req, res }) => {
 
-  const cookies = context.req.cookies
+  const cookies = req.cookies
 
-  if (cookies.token) {
-      return {
-          redirect: {
-              destination: '/products',
-              permanent: false,
-          },
-      }
+
+  if (cookies.token && cookies.remember == 'true') {
+    return {
+      redirect: {
+        destination: '/products',
+        permanent: false,
+      },
+    }
 
   } else {
-      return{
-        props:{}
-      }
+
+    deleteCookie("token", { req, res });
+    deleteCookie("remember", { req, res })
+
+    return {
+      props: {}
+    }
 
   }
 
