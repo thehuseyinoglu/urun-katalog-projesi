@@ -1,12 +1,14 @@
 import { getCookie, getCookies, setCookie } from 'cookies-next';
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from '../components/header'
 import ProductCard from '../components/productCard'
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import Layout from '@/components/Layout';
+import { useRouter } from 'next/router';
 
 const Products = ({ data }) => {
+
 
 
 
@@ -14,18 +16,17 @@ const Products = ({ data }) => {
     <div>
       <Layout>
 
-
-      <div className='flex justify-center'>
-        <div className=' container py-10 px-16 grid lg:grid-cols-2 justify-items-center xl:grid-cols-4 gap-y-4'>
-          {data &&
-            data.products?.map((product, i) => (
-              <Link key={i} href={`detail/${product.id}`}>
-              <ProductCard  product={product} />
-              </Link>
-            ))
-          }
+        <div className='flex justify-center'>
+          <div className=' container py-10 px-16 grid lg:grid-cols-2 justify-items-center xl:grid-cols-4 gap-y-4'>
+            {data &&
+              data.products?.map((product, i) => (
+                <div key={i} href={`detail/${product.id}`}>
+                  <ProductCard product={product} />
+                </div>
+              ))
+            }
+          </div>
         </div>
-      </div>
       </Layout>
 
     </div>
@@ -43,10 +44,23 @@ export const getServerSideProps = async (context) => {
       'access-token': cookies.token
     }
   }).then(res => res.json())
-  return {
-    props: {
-      data
+
+  if (!cookies.token) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+
+  } else {
+    return {
+      props: {
+        data
+      }
     }
   }
+
+
 }
 
