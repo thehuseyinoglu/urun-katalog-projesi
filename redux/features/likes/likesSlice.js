@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    likes: []
+    likes: [],
 }
 
 export const likesSlice = createSlice({
@@ -17,9 +17,8 @@ export const likesSlice = createSlice({
         deleteLikes: (state) => {
             state.likes = []
         }
-
     }
 })
 
-export const { likeProduct, unLikeProduct,deleteLikes } = likesSlice.actions
+export const { likeProduct, unLikeProduct, deleteLikes } = likesSlice.actions
 export default likesSlice.reducer

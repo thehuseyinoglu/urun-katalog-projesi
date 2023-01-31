@@ -1,27 +1,12 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
-import { deleteCookie, getCookie, getCookies, setCookie } from 'cookies-next';
-import Link from 'next/link';
+import { deleteCookie } from 'cookies-next';
 import { useState } from 'react';
 import Login from '../components/login'
 import Register from '../components/register'
-const inter = Inter({ subsets: ['latin'] })
-
-
 
 export default function Home() {
 
-
-  // const localtoken = () => {
-  //   console.log('berkay')
-  //   setCookie('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RiQGdtYWlsLmNvbSIsImlhdCI6MTY3NTAxNTEzOSwiZXhwIjoxNzAwOTM1MTM5fQ.oTBUw7T7qmQLqh7Mavm3sKuxh0hEuex3sC0WnRPdfmY',);
-  // }
-
   const [isUser, setIsUser] = useState(true)
-
-
 
   return (
     <>
@@ -31,8 +16,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-
       <div className=' h-screen w-screen flex'>
         <div className=' bg-header-logo w-2/3 h-screen justify-center items-center flex flex-col'>
           <div className='flex flex-col  text-white gap-3'>
@@ -40,9 +23,7 @@ export default function Home() {
             <span className='text-2xl'>The most popular book shop for IT</span>
           </div>
         </div>
-
         <div className='w-1/3 h-screen flex justify-center items-center'>
-
           <div className='flex flex-col '>
 
             {
@@ -70,8 +51,6 @@ export default function Home() {
             }
 
           </div>
-
-
         </div>
       </div>
     </>
@@ -80,7 +59,6 @@ export default function Home() {
 export const getServerSideProps = async ({ req, res }) => {
 
   const cookies = req.cookies
-
 
   if (cookies.token && cookies.remember == 'true') {
     return {
@@ -91,10 +69,9 @@ export const getServerSideProps = async ({ req, res }) => {
     }
 
   } else {
-
     deleteCookie("token", { req, res });
     deleteCookie("remember", { req, res })
-
+    
     return {
       props: {}
     }

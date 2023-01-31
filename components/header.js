@@ -21,7 +21,7 @@ const header = () => {
         <span className='text-white text-4xl'>Piton</span>
         <span className=' text-white text-4xl opacity-60'>Shop</span>
       </div>
-      <button onClick={()=>logout()} className='bg-white text-black py-3 px-7 text-xl rounded-full font-semibold'>Logout</button>
+      <button onClick={() => logout()} className='bg-white text-black py-3 px-7 text-xl rounded-full font-semibold'>Logout</button>
     </div>
   )
 }

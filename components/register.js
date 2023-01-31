@@ -31,20 +31,14 @@ const register = () => {
         }
     }
 
-
-
-
-
     return (
         <div className='flex flex-col gap-4'>
             <input onChange={(e) => setFullName(e.target.value)}
-                className={ errorMailName ? 'py-3 px-8 w-[326px] border  border-red-600 rounded-full outline-none' : 'py-3 px-8 w-[326px] border border-product-card-border rounded-full outline-none'} type="text" placeholder='&#9823; FullName' />
+                className={errorMailName ? 'py-3 px-8 w-[326px] border  border-red-600 rounded-full outline-none' : 'py-3 px-8 w-[326px] border border-product-card-border rounded-full outline-none'} type="text" placeholder='&#9823; FullName' />
             <input onChange={(e) => setEmail(e.target.value)} id='email' className={errorMailName ? 'py-3   w-[326px] px-8 border border-red-600 rounded-full outline-none' : 'py-3   w-[326px] px-8 border border-product-card-border rounded-full outline-none'} type="email" placeholder='&#128231; Email Address' required />
-            <input onChange={(e) => setPassword(e.target.value)} className={ errorPassword ? 'py-3   w-[326px] px-8 border border-red-600 rounded-full outline-none' : 'py-3   w-[326px] px-8 border border-product-card-border rounded-full outline-none'} type="password" placeholder='&#9730; Password' />
+            <input onChange={(e) => setPassword(e.target.value)} className={errorPassword ? 'py-3   w-[326px] px-8 border border-red-600 rounded-full outline-none' : 'py-3   w-[326px] px-8 border border-product-card-border rounded-full outline-none'} type="password" placeholder='&#9730; Password' />
             <span className=''>Şifre sayı ve harflerden oluşmalıdır</span>
             <button className=' text-white rounded-full py-4 bg-header-logo ' onClick={() => register()}>Register</button>
-
-
         </div>
     )
 }

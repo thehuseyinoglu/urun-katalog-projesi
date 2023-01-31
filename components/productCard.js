@@ -1,7 +1,6 @@
 import { likeProduct, unLikeProduct } from '@/redux/features/likes/likesSlice'
 import axios from 'axios'
 import { getCookie } from 'cookies-next'
-import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,18 +8,15 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const productCard = ({ product }) => {
 
-
     const { likes } = useSelector(state => state.likes)
     const dispatch = useDispatch()
     const [like, setLike] = useState(false)
 
-    console.log(product.id, likes.includes(product.id))
-
     useEffect(() => {
-        if( likes.includes(product.id)  ){
+        if (likes.includes(product.id)) {
             setLike(true)
         }
-       
+
     }, [])
 
     const likeUnlike = (id) => {

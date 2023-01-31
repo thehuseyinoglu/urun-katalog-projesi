@@ -1,21 +1,13 @@
-import { getCookie, getCookies, setCookie } from 'cookies-next';
-import React, { useContext, useEffect, useState } from 'react'
-import Header from '../components/header'
+import React from 'react'
 import ProductCard from '../components/productCard'
-import { GetServerSideProps } from 'next';
-import Link from 'next/link';
 import Layout from '@/components/Layout';
-import { useRouter } from 'next/router';
+
 
 const Products = ({ data }) => {
-
-
-
 
   return (
     <div>
       <Layout>
-
         <div className='flex justify-center'>
           <div className=' container py-10 px-16 grid lg:grid-cols-2 justify-items-center xl:grid-cols-4 gap-y-4'>
             {data &&
@@ -60,7 +52,5 @@ export const getServerSideProps = async (context) => {
       }
     }
   }
-
-
 }
 
