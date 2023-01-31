@@ -17,13 +17,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className=' h-screen w-screen flex'>
-        <div className=' bg-header-logo w-2/3 h-screen justify-center items-center flex flex-col'>
+        <div className=' bg-header-logo w-0 lg:w-2/3 h-screen justify-center items-center flex flex-col'>
           <div className='flex flex-col  text-white gap-3'>
             <span className='font-bold text-6xl'>PitonShop</span>
             <span className='text-2xl'>The most popular book shop for IT</span>
           </div>
         </div>
-        <div className='w-1/3 h-screen flex justify-center items-center'>
+        <div className='w-full lg:w-1/3 h-screen flex justify-center items-center'>
           <div className='flex flex-col '>
 
             {

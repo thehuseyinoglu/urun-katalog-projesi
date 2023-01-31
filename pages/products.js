@@ -9,7 +9,7 @@ const Products = ({ data }) => {
     <div>
       <Layout>
         <div className='flex justify-center'>
-          <div className=' container py-10 px-16 grid lg:grid-cols-2 justify-items-center xl:grid-cols-4 gap-y-4'>
+          <div className=' container py-10 px-16 grid lg:grid-cols-2 justify-items-center xl:grid-cols-3 2xl:grid-cols-4 gap-y-4'>
             {data &&
               data.products?.map((product, i) => (
                 <div key={i} href={`detail/${product.id}`}>
